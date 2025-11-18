@@ -1,71 +1,51 @@
+import React from 'react'
+import HeroBanner from './components/HeroBanner'
+import ContactForm from './components/ContactForm'
+import ContactSidebar from './components/ContactSidebar'
+import MapSection from './components/MapSection'
+
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_50%)]"></div>
+    <div className="min-h-screen bg-gradient-to-br from-[#2B0A0A] via-[#3A0E0E] to-[#1B0707]">
+      {/* subtle mandala background */}
+      <div className="absolute inset-0 opacity-[0.06]" style={{
+        backgroundImage: `url('data:image/svg+xml;utf8,${encodeURIComponent(`
+          <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\">\n  <defs>\n    <pattern id=\"dots\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <circle cx=\"1\" cy=\"1\" r=\"1\" fill=\"#FDE68A\" opacity=\"0.6\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#dots)\"/>\n</svg>\n        `)}`
+      }} />
 
-      <div className="relative min-h-screen flex items-center justify-center p-8">
-        <div className="max-w-2xl w-full">
-          {/* Header with Flames icon */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center mb-6">
-              <img
-                src="/flame-icon.svg"
-                alt="Flames"
-                className="w-24 h-24 drop-shadow-[0_0_25px_rgba(59,130,246,0.5)]"
-              />
-            </div>
+      <HeroBanner />
 
-            <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">
-              Flames Blue
-            </h1>
-
-            <p className="text-xl text-blue-200 mb-6">
-              Build applications through conversation
-            </p>
+      {/* Content */}
+      <main className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 -mt-6 sm:-mt-10 pb-16">
+        {/* Card layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="lg:col-span-2 space-y-6 sm:space-y-8">
+            <ContactForm />
+            <MapSection />
           </div>
-
-          {/* Instructions */}
-          <div className="bg-slate-800/50 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 shadow-xl mb-6">
-            <div className="flex items-start gap-4 mb-6">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                1
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Describe your idea</h3>
-                <p className="text-blue-200/80 text-sm">Use the chat panel on the left to tell the AI what you want to build</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 mb-6">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                2
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Watch it build</h3>
-                <p className="text-blue-200/80 text-sm">Your app will appear in this preview as the AI generates the code</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                3
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Refine and iterate</h3>
-                <p className="text-blue-200/80 text-sm">Continue the conversation to add features and make changes</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Footer */}
-          <div className="text-center">
-            <p className="text-sm text-blue-300/60">
-              No coding required • Just describe what you want
-            </p>
+          <div className="lg:col-span-1">
+            <ContactSidebar />
           </div>
         </div>
-      </div>
+
+        {/* trust badges / motifs */}
+        <div className="mt-12 sm:mt-16 flex flex-wrap items-center justify-center gap-4 sm:gap-6 opacity-90">
+          {['Sherwanis','Lehengas','Sarees','Kurtas','Indo‑Western'].map((t) => (
+            <span key={t} className="px-3 py-1.5 rounded-full text-xs sm:text-sm tracking-wide border border-amber-400/40 text-amber-200 bg-amber-900/20 backdrop-blur">
+              {t}
+            </span>
+          ))}
+        </div>
+      </main>
+
+      {/* footer */}
+      <footer className="relative z-10 border-t border-amber-900/20 bg-[#210909]/70 backdrop-blur-sm">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+          <p className="text-center text-amber-100/80 text-sm">
+            Crafted with love for tradition • Royal Ethnic House
+          </p>
+        </div>
+      </footer>
     </div>
   )
 }
